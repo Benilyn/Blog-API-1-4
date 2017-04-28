@@ -10,6 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "modules": "^0.4.0",
+    "morgan": "^1.8.1",
     "uuid": "^3.0.1"
   }
 }
