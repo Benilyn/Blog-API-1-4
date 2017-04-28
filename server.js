@@ -12,7 +12,7 @@ const blogPostsRouter = require('./blogPostsRouter');
 
 app.use(morgan('common'));
 app.use(express.static('public'));
-app.use('/blog-posts', blogPostsRouter);
+app.use('/', blogPostsRouter);
 
 
 app.listen(process.env.PORT || 8080, () => {
