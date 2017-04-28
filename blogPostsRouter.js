@@ -8,17 +8,17 @@ const {BlogPosts}  	= require('./models');
 
 
 BlogPosts.create (
-	'Wisdom allows nothing to be good tht will not be so forever;'
-	'no man to be happy but he that needs no other happiness than what he has within himself;'
-	'no man to be great or powerful that is not master of himself.'
+	'Wisdom allows nothing to be good tht will not be so forever;' +
+	'no man to be happy but he that needs no other happiness than what he has within himself;' +
+	'no man to be great or powerful that is not master of himself.' +
 	' - Lucius Annaeus Seneca'
 	); //BlogPosts.create
 
 BlogPosts.create (
-	'I will govern my life and thoughts as if the whole world were to see the one and read the other,'
-	'for what dows it signify to make anything a secret to my neighbor,'
-	'when to God, who is the searcher of our hearts,'
-	'all our privacies are open?'
+	'I will govern my life and thoughts as if the whole world were to see the one and read the other,' +
+	'for what dows it signify to make anything a secret to my neighbor,' +
+	'when to God, who is the searcher of our hearts,' +
+	'all our privacies are open?' +
 	' - Lucius Annaeus Seneca'
 	); //BlogPosts.create
 
@@ -85,8 +85,8 @@ router.put('/:id', jsonParser, (req, res) => {
 
 	if (req.params.id !== req.body.id) {
 		const message = (
-			`Request path id `(${req.params.id})` and request body id 
-			`(${req.body.id})` must match`
+			`Request path id "${req.params.id}" and request body id 
+			${req.body.id} must match`
 		); //const message
 
 		console.error(message);
