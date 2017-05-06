@@ -16,7 +16,41 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 app.use('/', blogPostsRouter);
 
-
-app.listen(process.env.PORT || 8080, () => {
-  console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
+app.get('/', (req, res) => {
+  res.send(BlogPosts);
 });
+
+let server;
+
+function runServer() {
+	const port = process.env.PORT || 8080;
+	return new Promise((resolve, reject) => {
+		server = app.listen(port, () => {
+			console.log('Your app is listening on the ${port}');
+			resolve(server);
+		}) //server
+		.on('error', err => {
+			reject(err);
+		}); //.on(error)
+	}); //return new Promise
+} //function runServer
+
+function closeServer() {
+	return new Promise((resolve, reject) => {
+		console.log('Closing server');
+		server.close(err => {
+			if (err) {
+				reject(err);
+				return;
+			} //if(err)
+			resolve();
+		}); //server.close(err)
+	}); //return new Promise
+} //function closeServer
+
+if (require.main === module) {
+  runServer().catch(err => console.error(err));
+} //if (require.main === module)
+
+
+module.exports = {app, runServer, closeServer};
