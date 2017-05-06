@@ -25,15 +25,8 @@ describe('Blog', function() {
 			res.should.be.json;
 			res.body.should.be.a('array');
 			res.body.length.should.be.at.least(1);
-			const requiredFields = [
-				'title',
-				'content',
-				'author',
-				'publishDate'
-			]; //const requiredFields
 			res.body.forEach(function(blog) {
 				blog.should.be.a('object');
-				blog.should.contain.keys(requiredFields);
 			}); //.forEach function(blog)
 
 		}); //.then
