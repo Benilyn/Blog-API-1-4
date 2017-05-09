@@ -101,10 +101,10 @@ router.put('/:id', jsonParser, (req, res) => {
 		title: req.body.title,
 		content: req.body.content,
 		author: req.body.author,
-		publishDate: req.body.publishDate
+		//publishDate: req.body.publishDate
 	}); //const updatedBlog 
-
-	res.status(204).json(updatedBlog);
+	
+	res.status(200).json(updatedBlog);
 }); //router.put
 
 module.exports = router;
