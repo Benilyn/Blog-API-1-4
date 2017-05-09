@@ -19,7 +19,7 @@ describe('Blog', function() {
 
 	it('should list BlogPosts on GET', function() {
 		return chai.request(app)
-		.get('/')
+		.get('/blog-post')
 		.then(function(res) {
 			res.should.have.status(200);
 			res.should.be.json;
@@ -38,7 +38,7 @@ describe('Blog', function() {
 			author: 'Lyn'
 		}; //const newBlogPost
 		return chai.request(app)
-		.post('/')
+		.post('/blog-post')
 		.send(newBlogPost)
 		.then(function(res) {
 			res.should.have.status(201);
@@ -59,4 +59,14 @@ describe('Blog', function() {
 		}); //.then function
 	}); //it(should add BlogPosts on POST)
 
+	
+
 }); //describe(Blog)
+
+
+
+
+
+
+
+

@@ -14,7 +14,7 @@ const blogPostsRouter = require('./blogPostsRouter');
 
 app.use(morgan('common'));
 app.use(express.static('public'));
-app.use('/', blogPostsRouter);
+app.use('/blog-post', blogPostsRouter);
 
 app.get('/', (req, res) => {
   res.send(BlogPosts);
