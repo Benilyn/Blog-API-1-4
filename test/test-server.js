@@ -69,7 +69,37 @@ describe('Blog', function() {
 		.then(function(res) {
 		res.should.have.status(204);
 		}); //.then function status(204)
-}); //it(should delete BlogPosts on DELETE)
+	}); //it(should delete BlogPosts on DELETE)
+
+
+	it('should update blog post on PUT', function() {
+  		const updateBlogPost = {
+  			title: 'Testing PUT',
+			content: 'This is a test for update on a blog post',
+			author: 'Lyn',
+			//publishDate: 1494348025340
+ 		}; //const updateRecipe
+  		return chai.request(app)
+  		.get('/blog-post')
+  		//.set(`content-type`, `application/json`)
+  		.then(function(res) {
+  			updateBlogPost.id = res.body[0].id;
+  			return chai.request(app)
+          	.put(`/blog-post/${updateBlogPost.id}`)
+          	.send(updateBlogPost)
+          	.then(function(res) {
+	  			res.should.have.status(200);
+	  			console.log(res);
+	  			res.should.be.json;
+	  			res.body.should.be.a('object');
+	  			res.body.should.deep.equal(Object.assign(updateBlogPost, {
+	  				publishDate: res.body.publishDate
+	  			}));
+			}); //.then function (status 204)
+  		}); //.then function (updateBlogPost)
+
+  		
+  	}); //it(should update blog post on PUT
 
 }); //describe(Blog)
 
